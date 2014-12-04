@@ -8,21 +8,21 @@ High performance gallery designed for web images built with FastImageCache.
 2. Create a subclass of `GalleryViewController`.
 3. Implement `GalleryDataSource` protocol. As examples shown below
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Set dataSource of GalleryViewController
-        self.dataSource = self
-        ...
-    }
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            // Set dataSource of GalleryViewController
+            self.dataSource = self
+            ...
+        }
     
-    // MARK: Gallery Data Source
-    func gallery(gallery: GalleryViewController, numberOfImagesInSection section: Int) -> Int {
-        // return number of images
-    }
-    
-    func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> String {
-        // return the URL of image at index path
-    }
+        // MARK: Gallery Data Source
+        func gallery(gallery: GalleryViewController, numberOfImagesInSection section: Int) -> Int {
+            // return number of images
+        }
+        
+        func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> String {
+            // return the URL of image at index path
+        }
     
 ## TODO
 0. I will implement a image view controller to view specific photos.
