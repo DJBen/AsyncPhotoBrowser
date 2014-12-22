@@ -213,11 +213,12 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             page += indexPath.row
             selectedIndexPath = indexPath
+            modalPresentationStyle = .FullScreen
             let browser = GalleryBrowsePhotoViewController(startPage: page)
             browser.dataSource = self
             let navigationController = UINavigationController(rootViewController: browser)
             animator = GalleryViewControllerAnimator(selectedImage: images[selectedIndexPath!]!.thumbnail, fromCellWithFrame: self.collectionView.layoutAttributesForItemAtIndexPath(selectedIndexPath!)!.frame)
-            navigationController.transitioningDelegate = animator
+//            navigationController.transitioningDelegate = animator
             presentViewController(navigationController, animated: true, completion: nil)
         } else {
             println("not ready! s: \(imageEntity.sourceImage) t: \(imageEntity.thumbnail) i: \(imageEntity.indexPath)")

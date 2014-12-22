@@ -27,6 +27,7 @@ class GalleryViewControllerAnimator: NSObject, UIViewControllerTransitioningDele
         let transitioning = defaultTransitioning()
         let galleryTransitioning = transitioning as GalleryViewControllerTransitioning
         let browser = ((dismissed as UINavigationController).viewControllers[0]) as GalleryBrowsePhotoViewController
+//        let browser = dismissed as GalleryBrowsePhotoViewController
         galleryTransitioning.image = browser.currentImageEntity?.sourceImage ?? browser.currentImageEntity?.thumbnail
         galleryTransitioning.reversed = true
         galleryTransitioning.zoomToCellFrameUponDismissal = browser.startPage == browser.currentPage
@@ -56,9 +57,10 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
         let container = transitionContext.containerView()
         let transitionDuration = self.transitionDuration(transitionContext)
         
-        container.insertSubview(toView, belowSubview: fromView)
+//        container.insertSubview(toView, belowSubview: fromView)
 
         if !reversed {
+            container.addSubview(toView)
             let imageView = UIImageView(image: image)
             imageView.contentMode = .ScaleAspectFit
             imageView.frame = cellFrame
@@ -74,6 +76,7 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
                 transitionContext.completeTransition(true)
             })
         } else {
+            container.addSubview(toView)
             let imageView = UIImageView(image: image)
             imageView.contentMode = .ScaleAspectFit
             imageView.frame = UIScreen.mainScreen().bounds
