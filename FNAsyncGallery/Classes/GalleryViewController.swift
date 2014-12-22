@@ -45,7 +45,7 @@ import UIKit
 
 }
 
-class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GalleryBrowserDataSource {
     
     enum GalleryCellSizingMode {
         case FixedSize(CGSize)
@@ -78,7 +78,9 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private var cacheAlreadySetup: Bool = false
     private var collectionViewLayout = UICollectionViewFlowLayout()
-    private var photos = [NSIndexPath: UIImage]()
+    private var images = [NSIndexPath: FNImage]()
+    private var selectedIndexPath: NSIndexPath?
+    private var animator: UIViewControllerTransitioningDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,6 +126,21 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    private func indexPathForPage(page: Int) -> NSIndexPath? {
+        if page < 0 {
+            return nil
+        }
+        var targetPage = page
+        for section in 0..<self.numberOfSectionsInCollectionView(collectionView) {
+            let itemsInCurrentSection = self.collectionView(collectionView, numberOfItemsInSection: section)
+            if targetPage < itemsInCurrentSection {
+                return NSIndexPath(forItem: targetPage, inSection: section)
+            }
+            targetPage -= itemsInCurrentSection
+        }
+        return nil
+    }
+    
     // MARK: Collection View Data Source
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -136,23 +153,34 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewCellIdentifier, forIndexPath: indexPath) as GalleryImageCell
+        
         // If the cache is properly set up, try to retrieve the image from internet
         if FICImageCache.sharedImageCache().formatWithName(FNImageSquareImage32BitBGRAFormatName) != nil {
             let imageURLString: String? = dataSource?.gallery?(self, imageURLAtIndexPath: indexPath)
             if imageURLString != nil {
-                let image = FNImage(URLString: imageURLString!, indexPath: indexPath)
-                let imageExists = FICImageCache.sharedImageCache().imageExistsForEntity(image, withFormatName: FNImageSquareImage32BitBGRAFormatName)
-                FICImageCache.sharedImageCache().retrieveImageForEntity(image, withFormatName: FNImageSquareImage32BitBGRAFormatName) { (entity, formatName, image) -> Void in
-                    let imageEntity = entity as FNImage
-                    self.photos[imageEntity.indexPath!] = image
-                    // Trigger partial update if new image comes in
+                var imageEntity: FNImage!
+                imageEntity = images[indexPath]
+                if imageEntity == nil {
+                    imageEntity = FNImage(URLString: imageURLString!, indexPath: indexPath)
+                    images[indexPath] = imageEntity
+                }
+                let imageExists = FICImageCache.sharedImageCache().imageExistsForEntity(imageEntity, withFormatName: FNImageSquareImage32BitBGRAFormatName)
+                FICImageCache.sharedImageCache().retrieveImageForEntity(imageEntity, withFormatName: FNImageSquareImage32BitBGRAFormatName) { (entity, formatName, image) -> Void in
+                    let theImageEntity = entity as FNImage
+                    theImageEntity.thumbnail = image
+                    
+                    // Trigger partial update only if new image comes in
                     if !imageExists {
-                        self.collectionView.reloadItemsAtIndexPaths([imageEntity.indexPath!])
+                        if image != nil {
+                            self.collectionView.reloadItemsAtIndexPaths([theImageEntity.indexPath!])
+                        } else {
+                            println("Failed to retrieve image at (\(indexPath.section), \(indexPath.row))")
+                        }
                     }
                 }
             }
         }
-        cell.image = self.photos[indexPath]
+        cell.image = self.images[indexPath]?.thumbnail
         return cell
     }
     
@@ -174,6 +202,40 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
             let optimumWidth = (collectionView.bounds.size.width - minItemSpacing * CGFloat(itemsPerRow - 1)) / CGFloat(itemsPerRow)
             return CGSize(width: optimumWidth, height: optimumWidth)
         }
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let imageEntity = self.images[indexPath]!
+        if imageEntity.isReady {
+            var page: Int = 0
+            for section in 0..<indexPath.section {
+                page += self.collectionView(collectionView, numberOfItemsInSection: section)
+            }
+            page += indexPath.row
+            selectedIndexPath = indexPath
+            let browser = GalleryBrowsePhotoViewController(startPage: page)
+            browser.dataSource = self
+            let navigationController = UINavigationController(rootViewController: browser)
+            animator = GalleryViewControllerAnimator(selectedImage: images[selectedIndexPath!]!.thumbnail, fromCellWithFrame: self.collectionView.layoutAttributesForItemAtIndexPath(selectedIndexPath!)!.frame)
+            navigationController.transitioningDelegate = animator
+            presentViewController(navigationController, animated: true, completion: nil)
+        } else {
+            println("not ready! s: \(imageEntity.sourceImage) t: \(imageEntity.thumbnail) i: \(imageEntity.indexPath)")
+        }
+    }
+    
+    // MARK: Gallery Browser Delegate
+    func numberOfImagesForGalleryBrowser(browser: GalleryBrowsePhotoViewController) -> Int {
+        var imageCount: Int = 0
+        for section in 0..<self.numberOfSectionsInCollectionView(collectionView) {
+            imageCount += self.collectionView(collectionView, numberOfItemsInSection: section)
+        }
+        return imageCount
+    }
+    
+    func imageEntityForPage(page: Int, inGalleyBrowser galleryBrowser: GalleryBrowsePhotoViewController) -> FNImage? {
+        let indexPath = self.indexPathForPage(page)
+        return self.images[indexPath!]
     }
     
 }

@@ -11,11 +11,36 @@ import UIKit
 let FNImageImageFormatFamily = "FICDPhotoImageFormatFamily"
 let FNImageSquareImage32BitBGRAFormatName = "edu.jhu.djben.FNAsyncGallery.FICDPhotoSquareImage32BitBGRAFormatName"
 
-class FNImage: NSObject, FICEntity {
+func ==(left: FNImage, right: FNImage) -> Bool {
+    return left.URLString == right.URLString
+}
+
+protocol FNImageDelegate {
+    func sourceImageStateChangedForImageEntity(imageEntity: FNImage, oldState: FNImage.FNImageSourceImageState, newState: FNImage.FNImageSourceImageState)
+}
+
+class FNImage: NSObject, FICEntity, Hashable {
+    
+    enum FNImageSourceImageState {
+        case NotLoaded
+        case Loading
+        case Ready
+        case Failed
+    }
+    
     private var _UUID: String!
     var URLString: String
     var indexPath: NSIndexPath?
+    var page: Int?
     var sourceImage: UIImage?
+    var thumbnail: UIImage?
+    var delegate: FNImageDelegate?
+    
+    private var reloadRequest: Request?
+    
+    override var hashValue: Int {
+        return self.URLString.hashValue
+    }
     
     var UUID: String {
         get {
@@ -30,6 +55,16 @@ class FNImage: NSObject, FICEntity {
     var sourceImageUUID: String {
         get {
             return self.UUID
+        }
+    }
+    
+    var isReady: Bool {
+        return thumbnail != nil && indexPath != nil
+    }
+    
+    var sourceImageState: FNImageSourceImageState = .NotLoaded {
+        willSet {
+            self.delegate?.sourceImageStateChangedForImageEntity(self, oldState: self.sourceImageState, newState: newValue)
         }
     }
     
@@ -59,6 +94,31 @@ class FNImage: NSObject, FICEntity {
             UIGraphicsPopContext()
         }
         return drawingBlock
+    }
+    
+    func loadSourceImageWithCompletion(completion: ((error: NSError?) -> Void)?) {
+        if reloadRequest != nil {
+            return
+        }
+        sourceImageState = .Loading
+        reloadRequest = request(.GET, self.URLString).response { (_, _, data, error) in
+            self.reloadRequest = nil
+            if error != nil {
+                completion?(error: error)
+                self.sourceImageState = .Failed
+                return
+            }
+            if let imageData = data as? NSData {
+                if let image = UIImage(data: imageData) {
+                    self.sourceImage = image
+                    self.sourceImageState = .Ready
+                    completion?(error: nil)
+                    return
+                }
+            }
+            self.sourceImageState = .Failed
+            completion?(error: NSError(domain: "FNImageErrorDomain", code: 0, userInfo: nil))
+        }
     }
 }
 

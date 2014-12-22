@@ -8,6 +8,93 @@
 
 import UIKit
 
-class GalleryViewControllerTransitioning: NSObject {
-   
+class GalleryViewControllerAnimator: NSObject, UIViewControllerTransitioningDelegate {
+    
+    var selectedImage: UIImage?
+    var cellFrame: CGRect
+    
+    init(selectedImage: UIImage?, fromCellWithFrame cellFrame: CGRect) {
+        self.selectedImage = selectedImage
+        self.cellFrame = cellFrame
+    }
+    
+    // MARK: Transitioning Delegate
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return defaultTransitioning()
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transitioning = defaultTransitioning()
+        let galleryTransitioning = transitioning as GalleryViewControllerTransitioning
+        let browser = ((dismissed as UINavigationController).viewControllers[0]) as GalleryBrowsePhotoViewController
+        galleryTransitioning.image = browser.currentImageEntity?.sourceImage ?? browser.currentImageEntity?.thumbnail
+        galleryTransitioning.reversed = true
+        galleryTransitioning.zoomToCellFrameUponDismissal = browser.startPage == browser.currentPage
+        return galleryTransitioning
+    }
+    
+    private func defaultTransitioning() -> UIViewControllerAnimatedTransitioning {
+        let transitioning = GalleryViewControllerTransitioning()
+        transitioning.cellFrame = cellFrame
+        transitioning.image = selectedImage
+        return transitioning
+    }
+}
+
+class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
+    var reversed: Bool = false
+    var image: UIImage?
+    var cellFrame = CGRect()
+    var zoomToCellFrameUponDismissal = true
+    
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        
+        let container = transitionContext.containerView()
+        let transitionDuration = self.transitionDuration(transitionContext)
+        
+        container.insertSubview(toView, belowSubview: fromView)
+
+        if !reversed {
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .ScaleAspectFit
+            imageView.frame = cellFrame
+            container.addSubview(imageView)
+            imageView.alpha = 0
+            UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
+                fromView.alpha = 0
+                imageView.alpha = 1
+                imageView.frame = UIScreen.mainScreen().bounds
+            }, completion: { complete in
+                imageView.removeFromSuperview()
+                fromView.removeFromSuperview()
+                transitionContext.completeTransition(true)
+            })
+        } else {
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .ScaleAspectFit
+            imageView.frame = UIScreen.mainScreen().bounds
+            container.addSubview(imageView)
+            UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
+                fromView.alpha = 0
+                imageView.alpha = 0
+                if self.zoomToCellFrameUponDismissal {
+                    imageView.frame = self.cellFrame
+                } else {
+                    imageView.transform = CGAffineTransformMakeScale(2.0, 2.0)
+                }
+            }, completion: { complete in
+                imageView.removeFromSuperview()
+                fromView.removeFromSuperview()
+                transitionContext.completeTransition(true)
+            })
+        }
+    }
+    
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+        return 0.5
+    }
 }

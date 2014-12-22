@@ -35,18 +35,24 @@ class ImageCacheManager: NSObject, FICImageCacheDelegate {
     // MARK: FICImageCache Delegate
     func imageCache(imageCache: FICImageCache!, wantsSourceImageForEntity entity: FICEntity!, withFormatName formatName: String!, completionBlock: FICImageRequestCompletionBlock!) {
         if let imageEntity = entity as? FNImage {
-            request(.GET, imageEntity.URLString).response { (_, _, data, error) in
+            imageEntity.sourceImageState = .Loading
+            request(.GET, imageEntity.URLString).response { (_, response, data, error) in
                 if error != nil {
                     println(error)
+                    imageEntity.sourceImageState = .Failed
+                    completionBlock(nil)
                     return
                 }
                 if let imageData = data as? NSData {
-                    let sourceImage = UIImage(data: imageData)
-                    
-                    completionBlock(sourceImage)
-                } else {
-                    // Data not compatible
+                    if let sourceImage = UIImage(data: imageData) {
+                        imageEntity.sourceImage = sourceImage
+                        imageEntity.sourceImageState = .Ready
+                        completionBlock(sourceImage)
+                        return
+                    }
                 }
+                imageEntity.sourceImageState = .Failed
+                completionBlock(nil)
             }
         }
     }
