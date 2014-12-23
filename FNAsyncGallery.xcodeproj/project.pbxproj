@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F41FAA511A49C52000AF7366 /* MathAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FAA501A49C52000AF7366 /* MathAdditions.swift */; };
 		F42375A31A1BCD8D003BECDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42375A21A1BCD8D003BECDF /* AppDelegate.swift */; };
 		F42375A51A1BCD8D003BECDF /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42375A41A1BCD8D003BECDF /* GalleryViewController.swift */; };
 		F42375A81A1BCD8D003BECDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42375A61A1BCD8D003BECDF /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F41FAA501A49C52000AF7366 /* MathAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathAdditions.swift; path = Classes/MathAdditions.swift; sourceTree = "<group>"; };
 		F423759D1A1BCD8D003BECDF /* FNAsyncGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FNAsyncGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42375A11A1BCD8D003BECDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F42375A21A1BCD8D003BECDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				F43626101A2C0E9E00DECBD9 /* GalleryImageCell.swift */,
 				F436260C1A2BD75900DECBD9 /* ImageCacheManager.swift */,
 				F436260E1A2BD99E00DECBD9 /* FNImage.swift */,
+				F41FAA501A49C52000AF7366 /* MathAdditions.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				F43626111A2C0E9E00DECBD9 /* GalleryImageCell.swift in Sources */,
 				F4D757FB1A45F82E000DE21E /* GalleryViewControllerTransitioning.swift in Sources */,
 				F436260F1A2BD99E00DECBD9 /* FNImage.swift in Sources */,
+				F41FAA511A49C52000AF7366 /* MathAdditions.swift in Sources */,
 				F42375A51A1BCD8D003BECDF /* GalleryViewController.swift in Sources */,
 				F43626031A2AF7FD00DECBD9 /* FICImageTableChunk.m in Sources */,
 				F4634AC51A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift in Sources */,

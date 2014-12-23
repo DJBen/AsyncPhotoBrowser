@@ -73,9 +73,7 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
             }
             scrollView.contentSize = CGSize(width: CGFloat(imageCount) * scrollView.bounds.width, height: scrollView.bounds.height)
             layedOutScrollView = true
-            
-            println("scrollview content size \(scrollView.contentSize) real \(scrollView.frame)")
-            
+                        
             // Modify start page
             scrollView.contentOffset = CGPoint(x: CGFloat(startPage) * scrollView.bounds.width, y: 0)
             loadVisiblePages()

@@ -217,11 +217,18 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
             let browser = GalleryBrowsePhotoViewController(startPage: page)
             browser.dataSource = self
             let navigationController = UINavigationController(rootViewController: browser)
-            animator = GalleryViewControllerAnimator(selectedImage: images[selectedIndexPath!]!.thumbnail, fromCellWithFrame: self.collectionView.layoutAttributesForItemAtIndexPath(selectedIndexPath!)!.frame)
-//            navigationController.transitioningDelegate = animator
+            
+            // Figure out selected image: choose source image whenever possible
+            let selectedImage = images[selectedIndexPath!]!.sourceImage ?? images[selectedIndexPath!]!.thumbnail
+            
+            // Calculate the frame of image user touches
+            let offsetAdjustment: CGPoint = collectionView.contentOffset
+            let cellFrame = self.collectionView.layoutAttributesForItemAtIndexPath(selectedIndexPath!)!.frame - offsetAdjustment
+            animator = GalleryViewControllerAnimator(selectedImage: selectedImage, fromCellWithFrame: cellFrame)
+            
+            // Set transition animator
+            navigationController.transitioningDelegate = animator
             presentViewController(navigationController, animated: true, completion: nil)
-        } else {
-            println("not ready! s: \(imageEntity.sourceImage) t: \(imageEntity.thumbnail) i: \(imageEntity.indexPath)")
         }
     }
     

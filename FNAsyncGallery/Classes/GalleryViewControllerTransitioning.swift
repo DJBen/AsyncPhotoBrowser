@@ -57,8 +57,6 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
         let container = transitionContext.containerView()
         let transitionDuration = self.transitionDuration(transitionContext)
         
-//        container.insertSubview(toView, belowSubview: fromView)
-
         if !reversed {
             container.addSubview(toView)
             let imageView = UIImageView(image: image)
@@ -66,13 +64,15 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
             imageView.frame = cellFrame
             container.addSubview(imageView)
             imageView.alpha = 0
+            toView.alpha = 0
             UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
                 fromView.alpha = 0
                 imageView.alpha = 1
                 imageView.frame = UIScreen.mainScreen().bounds
             }, completion: { complete in
+                fromView.alpha = 1
+                toView.alpha = 1
                 imageView.removeFromSuperview()
-                fromView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             })
         } else {
