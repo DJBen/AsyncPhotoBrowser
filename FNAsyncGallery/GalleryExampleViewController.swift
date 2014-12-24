@@ -24,6 +24,7 @@ class GalleryExampleViewController: GalleryViewController, GalleryDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "FNAsyncGallery"
     }
 
     override func didReceiveMemoryWarning() {
