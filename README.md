@@ -1,7 +1,7 @@
 FNAsyncGallery
 ==============
 
-High performance gallery designed for web images built with FastImageCache.
+High performance gallery designed for web images built with FastImageCache. It consists of a grid view controller that contains all thumbnails of the images. You can tap on any of the photos to browse specific images in a browser view controller with zoom in / out and scrolling capabilities.
 
 ## Usage
 1. Import all files in `/Classes`.
@@ -24,19 +24,19 @@ High performance gallery designed for web images built with FastImageCache.
             // return the URL of image at index path
         }
         
-## Screenshots
-![FastImageCache Demo](https://github.com/DJBen/FNAsyncGallery/blob/master/Screenshots/Screen%20Shot%202014-12-23%20at%202.10.45%20AM.png "FastImageCache")
-
-![Photo Browser](https://github.com/DJBen/FNAsyncGallery/blob/master/Screenshots/Screen%20Shot%202014-12-23%20at%202.10.51%20AM.png "Photo Browser")
+## Demo
+![FastImageCache Demo](https://raw.githubusercontent.com/DJBen/FNAsyncGallery/master/Screenshots/FNAsyncGallery_Demo.gif "FastImageCache")
 
 ## TODO
-1. Gallery View Controller currently has only one section containing all images.
-2. Transition from collection view controller to browse-specific-photo view controller is broken. I turned it off.
-3. Photo zooming unimplemented.
+1. Gallery View Controller currently has only one section containing all images. Consider adding more sections.
+
+## Bug
+1. Zooming sometimes makes image scrolling stuck. Zooming it again can solve this problem.
 
 ## Notes
 This is an experiment of `FastImageCache`.
 
 Photo gallery serves an important role among many use cases. Sadly there is not a perfect solution that is both automatic and has high performance at the same time. My purpose is to implement such a solution as perfect as possible. I appreciate any help from you if you are interested! 
+
 ## License
 MIT
