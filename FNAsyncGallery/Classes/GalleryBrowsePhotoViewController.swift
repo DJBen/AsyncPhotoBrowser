@@ -16,7 +16,19 @@ import UIKit
 class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
     
     var dataSource: GalleryBrowserDataSource?
-    var scrollView: UIScrollView!
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: self.view.bounds)
+        scrollView.pagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.indicatorStyle = .White
+        scrollView.bounces = true
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.alwaysBounceVertical = false
+        scrollView.delegate = self
+        return scrollView
+    }()
     
     var currentPage: Int {
         let pageWidth = scrollView.frame.size.width
@@ -88,17 +100,6 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doneButtonTapped:")
         let attributeDict = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController!.navigationBar.titleTextAttributes = attributeDict
-        scrollView = UIScrollView()
-        scrollView.scrollEnabled = true
-        scrollView.pagingEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = true
-        scrollView.indicatorStyle = .White
-        scrollView.bounces = true
-        scrollView.alwaysBounceHorizontal = false
-        scrollView.alwaysBounceVertical = false
-        scrollView.delegate = self
-        scrollView.frame = view.bounds
         view.addSubview(scrollView)
         layout(scrollView) { v in
             v.left == v.superview!.left
@@ -127,22 +128,26 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
             frame.origin.x = frame.size.width * CGFloat(page)
             frame.origin.y = 0.0
             
+            // Loading source image if not exists
             let imageEntity = dataSource!.imageEntityForPage(page, inGalleyBrowser: self)!
             imageEntity.page = page
             if imageEntity.sourceImageState == .NotLoaded {
                 imageEntity.loadSourceImageWithCompletion({ (error) -> Void in
                     if let pageView = self.pageViews[imageEntity.page!] {
                         if error == nil {
-                            println("reload page \(page) image complete")
+                            println("complete loading \(page)")
                             pageView.image = imageEntity.sourceImage
                         } else {
-                            println("reload page \(page) error \(error)")
+                            println("failed loading \(page), error \(error)")
                         }
                     }
                 })
+            } else if imageEntity.sourceImageState == .Paused {
+                imageEntity.resumeLoadingSource()
             }
             
             let newPageView = GalleryBrowserPageView(frame: frame)
+            newPageView.imageEntity = imageEntity
             newPageView.image = imageEntity.sourceImage ?? imageEntity.thumbnail
             imageEntity.delegate = newPageView
             newPageView.setActivityAccordingToImageState(imageEntity.sourceImageState)
@@ -161,8 +166,21 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         if let pageView = pageViews[page] {
             pageView.removeFromSuperview()
             pageViews[page] = nil
+            
+            // Suspend any loading request
+            let imageEntity = dataSource!.imageEntityForPage(page, inGalleyBrowser: self)
+            imageEntity?.pauseLoadingSource()
         }
         
+    }
+    
+    func resetPageZooming(page: Int) {
+        if page < 0 || page >= imageCount {
+            return
+        }
+        if let pageView = pageViews[page] {
+            pageView.scrollView.zoomScale = pageView.scrollView.minimumZoomScale
+        }
     }
     
     func loadVisiblePages() {
@@ -193,64 +211,9 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         navigationItem.title = "\(currentPage + 1) / \(imageCount)"
     }
     
-}
-
-class GalleryBrowserPageView: UIView, FNImageDelegate {
-
-    var image: UIImage? {
-        get {
-            return imageView.image
-        }
-        set {
-            imageView.image = newValue
-        }
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        resetPageZooming(currentPage - 1)
+        resetPageZooming(currentPage + 1)
     }
     
-    var imageView = UIImageView()
-    lazy private var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonSetup()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonSetup()
-    }
-    
-    private func commonSetup() {
-        imageView.contentMode = .ScaleAspectFit
-        addSubview(imageView)
-        activityIndicator.hidesWhenStopped = true
-        addSubview(activityIndicator)
-        layout(imageView) { v in
-            v.left == v.superview!.left
-            v.right == v.superview!.right
-            v.top == v.superview!.top
-            v.bottom == v.superview!.bottom
-        }
-        layout(activityIndicator) { v in
-            v.centerX == v.superview!.centerX
-            v.centerY == v.superview!.centerY
-        }
-    }
-    
-    func setActivityAccordingToImageState(state: FNImage.FNImageSourceImageState) {
-        switch state {
-        case .Loading:
-            activityIndicator.startAnimating()
-        case .Ready:
-            fallthrough
-        case .Failed:
-            fallthrough
-        case .NotLoaded:
-            activityIndicator.stopAnimating()
-        }
-    }
-    
-    // MARK: FNImage Delegate
-    func sourceImageStateChangedForImageEntity(imageEntity: FNImage, oldState: FNImage.FNImageSourceImageState, newState: FNImage.FNImageSourceImageState) {
-        setActivityAccordingToImageState(newState)
-    }
 }

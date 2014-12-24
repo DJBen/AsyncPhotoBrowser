@@ -23,6 +23,7 @@
 		F436260D1A2BD75900DECBD9 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436260C1A2BD75900DECBD9 /* ImageCacheManager.swift */; };
 		F436260F1A2BD99E00DECBD9 /* FNImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436260E1A2BD99E00DECBD9 /* FNImage.swift */; };
 		F43626111A2C0E9E00DECBD9 /* GalleryImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43626101A2C0E9E00DECBD9 /* GalleryImageCell.swift */; };
+		F43C6AD21A4AF69700B8C74F /* GalleryBrowserPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C6AD11A4AF69700B8C74F /* GalleryBrowserPageView.swift */; };
 		F4634AC51A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4634AC41A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift */; };
 		F46C7ACF1A1BCEE000FF82B4 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ACE1A1BCEE000FF82B4 /* Alamofire.swift */; };
 		F46C7AE01A1BCFF800FF82B4 /* Coefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD21A1BCFF800FF82B4 /* Coefficients.swift */; };
@@ -83,6 +84,7 @@
 		F436260C1A2BD75900DECBD9 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCacheManager.swift; path = Classes/ImageCacheManager.swift; sourceTree = "<group>"; };
 		F436260E1A2BD99E00DECBD9 /* FNImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FNImage.swift; path = Classes/FNImage.swift; sourceTree = "<group>"; };
 		F43626101A2C0E9E00DECBD9 /* GalleryImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryImageCell.swift; path = Classes/GalleryImageCell.swift; sourceTree = "<group>"; };
+		F43C6AD11A4AF69700B8C74F /* GalleryBrowserPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryBrowserPageView.swift; path = Classes/GalleryBrowserPageView.swift; sourceTree = "<group>"; };
 		F4634AC41A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryBrowsePhotoViewController.swift; path = Classes/GalleryBrowsePhotoViewController.swift; sourceTree = "<group>"; };
 		F46C7ACE1A1BCEE000FF82B4 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Alamofire/Source/Alamofire.swift; sourceTree = SOURCE_ROOT; };
 		F46C7AD21A1BCFF800FF82B4 /* Coefficients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coefficients.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				F42375A41A1BCD8D003BECDF /* GalleryViewController.swift */,
 				F4D757FA1A45F82E000DE21E /* GalleryViewControllerTransitioning.swift */,
 				F4634AC41A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift */,
+				F43C6AD11A4AF69700B8C74F /* GalleryBrowserPageView.swift */,
 				F43626101A2C0E9E00DECBD9 /* GalleryImageCell.swift */,
 				F436260C1A2BD75900DECBD9 /* ImageCacheManager.swift */,
 				F436260E1A2BD99E00DECBD9 /* FNImage.swift */,
@@ -342,6 +345,7 @@
 				F46C7AED1A1BCFF800FF82B4 /* View.swift in Sources */,
 				F46C7AEB1A1BCFF800FF82B4 /* Property.swift in Sources */,
 				F46C7AEC1A1BCFF800FF82B4 /* Size.swift in Sources */,
+				F43C6AD21A4AF69700B8C74F /* GalleryBrowserPageView.swift in Sources */,
 				F43626001A2AF7FD00DECBD9 /* FICImageCache.m in Sources */,
 				F43626011A2AF7FD00DECBD9 /* FICImageFormat.m in Sources */,
 				F46C7ACF1A1BCEE000FF82B4 /* Alamofire.swift in Sources */,

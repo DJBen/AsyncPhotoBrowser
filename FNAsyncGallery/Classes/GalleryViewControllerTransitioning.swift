@@ -63,11 +63,9 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
             imageView.contentMode = .ScaleAspectFit
             imageView.frame = cellFrame
             container.addSubview(imageView)
-            imageView.alpha = 0
             toView.alpha = 0
             UIView.animateWithDuration(transitionDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: { () -> Void in
                 fromView.alpha = 0
-                imageView.alpha = 1
                 imageView.frame = UIScreen.mainScreen().bounds
             }, completion: { complete in
                 fromView.alpha = 1
@@ -87,7 +85,7 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
                 if self.zoomToCellFrameUponDismissal {
                     imageView.frame = self.cellFrame
                 } else {
-                    imageView.transform = CGAffineTransformMakeScale(2.0, 2.0)
+                    imageView.transform = CGAffineTransformMakeScale(1.5, 1.5)
                 }
             }, completion: { complete in
                 imageView.removeFromSuperview()

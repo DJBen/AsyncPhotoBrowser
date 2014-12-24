@@ -24,6 +24,7 @@ class FNImage: NSObject, FICEntity, Hashable {
     enum FNImageSourceImageState {
         case NotLoaded
         case Loading
+        case Paused
         case Ready
         case Failed
     }
@@ -98,6 +99,7 @@ class FNImage: NSObject, FICEntity, Hashable {
     
     func loadSourceImageWithCompletion(completion: ((error: NSError?) -> Void)?) {
         if reloadRequest != nil {
+            resumeLoadingSource()
             return
         }
         sourceImageState = .Loading
@@ -118,6 +120,22 @@ class FNImage: NSObject, FICEntity, Hashable {
             }
             self.sourceImageState = .Failed
             completion?(error: NSError(domain: "FNImageErrorDomain", code: 0, userInfo: nil))
+        }
+    }
+    
+    func pauseLoadingSource() {
+        if reloadRequest != nil {
+            println("pause loading \(page)")
+            reloadRequest!.suspend()
+            sourceImageState = .Paused
+        }
+    }
+    
+    func resumeLoadingSource() {
+        if reloadRequest != nil {
+            println("resume loading \(page)")
+            reloadRequest!.resume()
+            sourceImageState = .Loading
         }
     }
 }
