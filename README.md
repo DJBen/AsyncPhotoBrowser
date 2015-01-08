@@ -31,7 +31,8 @@ High performance gallery designed for web images built with FastImageCache. It c
 1. Gallery View Controller currently has only one section containing all images. Consider adding more sections.
 
 ## Bug
-1. Zooming sometimes makes image scrolling stuck. Zooming it again can solve this problem.
+1. Scrolling gesture on the transparent part of images doesn't work.
+2. Zooming sometimes makes image scrolling stuck. Zooming it again can solve this problem.
 
 ## Notes
 This is an experiment of `FastImageCache`.
