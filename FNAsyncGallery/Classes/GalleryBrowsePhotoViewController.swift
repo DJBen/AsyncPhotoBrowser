@@ -28,6 +28,7 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         scrollView.alwaysBounceHorizontal = false
         scrollView.alwaysBounceVertical = false
         scrollView.delegate = self
+        scrollView.backgroundColor = UIColor.blackColor()
         return scrollView
     }()
     

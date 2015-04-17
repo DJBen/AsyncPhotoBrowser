@@ -27,7 +27,6 @@ class GalleryViewControllerAnimator: NSObject, UIViewControllerTransitioningDele
         let transitioning = defaultTransitioning()
         let galleryTransitioning = transitioning as! GalleryViewControllerTransitioning
         let browser = ((dismissed as! UINavigationController).viewControllers[0]) as! GalleryBrowsePhotoViewController
-//        let browser = dismissed as GalleryBrowsePhotoViewController
         galleryTransitioning.image = browser.currentImageEntity?.sourceImage ?? browser.currentImageEntity?.thumbnail
         galleryTransitioning.reversed = true
         galleryTransitioning.zoomToCellFrameUponDismissal = browser.startPage == browser.currentPage

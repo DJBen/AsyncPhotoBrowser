@@ -41,6 +41,16 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
         scrollView.bouncesZoom = true
         scrollView.delegate = self
         
+        let view = UIView()
+        view.backgroundColor = UIColor.whiteColor()
+        scrollView.addSubview(view)
+        layout(view) { v in
+            v.edges == inset(v.superview!.edges, 0)
+            return
+        }
+        
+        scrollView.addSubview(self.imageView)
+        
         // Set up gesture recognizer
         var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
         doubleTapRecognizer.numberOfTapsRequired = 2
@@ -52,7 +62,8 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
     lazy var imageView: UIImageView = {
         let tempImageView = UIImageView()
         tempImageView.contentMode = .ScaleAspectFit
-        tempImageView.opaque = true
+        tempImageView.backgroundColor = UIColor.clearColor()
+        tempImageView.userInteractionEnabled = false
         return tempImageView
     }()
     
@@ -72,9 +83,13 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
         commonSetup()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.contentSize = self.bounds.size
+    }
+    
     private func commonSetup() {
         addSubview(scrollView)
-        scrollView.addSubview(imageView)
         addSubview(activityIndicator)
         layout(scrollView) { v in
             v.left == v.superview!.left
@@ -122,14 +137,11 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
     }
     
     func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
-        // 1
         let pointInView = recognizer.locationInView(imageView)
         
-        // 2
         var newZoomScale = scrollView.zoomScale * 1.5
         newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
         
-        // 3
         let scrollViewSize = scrollView.bounds.size
         let w = scrollViewSize.width / newZoomScale
         let h = scrollViewSize.height / newZoomScale
@@ -137,8 +149,6 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
         let y = pointInView.y - (h / 2.0)
         
         let rectToZoomTo = CGRectMake(x, y, w, h);
-        
-        // 4
         scrollView.zoomToRect(rectToZoomTo, animated: true)
     }
 
@@ -149,7 +159,7 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        if imageEntity.sourceImageState == .Ready {
+        if let entity = imageEntity?.sourceImageState where entity == .Ready {
             return imageView
         }
         return nil
