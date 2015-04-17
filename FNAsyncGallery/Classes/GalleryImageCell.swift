@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 
 class GalleryImageCell: UICollectionViewCell {
     let imageView = UIImageView(frame: CGRectZero)

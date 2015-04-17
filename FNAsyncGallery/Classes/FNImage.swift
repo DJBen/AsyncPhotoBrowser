@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FastImageCache
+import Alamofire
 
 let FNImageImageFormatFamily = "FICDPhotoImageFormatFamily"
 let FNImageSquareImage32BitBGRAFormatName = "edu.jhu.djben.FNAsyncGallery.FICDPhotoSquareImage32BitBGRAFormatName"

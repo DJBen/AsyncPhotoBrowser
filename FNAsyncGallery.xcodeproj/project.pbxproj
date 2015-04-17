@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A75B70B3E18A82D3B6A4B034 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4992326DAFC2C74F9CA0E6BB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F41FAA511A49C52000AF7366 /* MathAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FAA501A49C52000AF7366 /* MathAdditions.swift */; };
 		F42375A31A1BCD8D003BECDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42375A21A1BCD8D003BECDF /* AppDelegate.swift */; };
 		F42375A51A1BCD8D003BECDF /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42375A41A1BCD8D003BECDF /* GalleryViewController.swift */; };
@@ -14,31 +15,11 @@
 		F42375AA1A1BCD8D003BECDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42375A91A1BCD8D003BECDF /* Images.xcassets */; };
 		F42375AD1A1BCD8D003BECDF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42375AB1A1BCD8D003BECDF /* LaunchScreen.xib */; };
 		F42375B91A1BCD8D003BECDF /* FNAsyncGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42375B81A1BCD8D003BECDF /* FNAsyncGalleryTests.swift */; };
-		F43626001A2AF7FD00DECBD9 /* FICImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F43625F41A2AF7FD00DECBD9 /* FICImageCache.m */; };
-		F43626011A2AF7FD00DECBD9 /* FICImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F43625F61A2AF7FD00DECBD9 /* FICImageFormat.m */; };
-		F43626021A2AF7FD00DECBD9 /* FICImageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = F43625F81A2AF7FD00DECBD9 /* FICImageTable.m */; };
-		F43626031A2AF7FD00DECBD9 /* FICImageTableChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = F43625FA1A2AF7FD00DECBD9 /* FICImageTableChunk.m */; };
-		F43626041A2AF7FD00DECBD9 /* FICImageTableEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F43625FC1A2AF7FD00DECBD9 /* FICImageTableEntry.m */; };
-		F43626051A2AF7FD00DECBD9 /* FICUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F43625FF1A2AF7FD00DECBD9 /* FICUtilities.m */; };
 		F436260D1A2BD75900DECBD9 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436260C1A2BD75900DECBD9 /* ImageCacheManager.swift */; };
 		F436260F1A2BD99E00DECBD9 /* FNImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436260E1A2BD99E00DECBD9 /* FNImage.swift */; };
 		F43626111A2C0E9E00DECBD9 /* GalleryImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43626101A2C0E9E00DECBD9 /* GalleryImageCell.swift */; };
 		F43C6AD21A4AF69700B8C74F /* GalleryBrowserPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C6AD11A4AF69700B8C74F /* GalleryBrowserPageView.swift */; };
 		F4634AC51A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4634AC41A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift */; };
-		F46C7ACF1A1BCEE000FF82B4 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ACE1A1BCEE000FF82B4 /* Alamofire.swift */; };
-		F46C7AE01A1BCFF800FF82B4 /* Coefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD21A1BCFF800FF82B4 /* Coefficients.swift */; };
-		F46C7AE11A1BCFF800FF82B4 /* Compound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD31A1BCFF800FF82B4 /* Compound.swift */; };
-		F46C7AE21A1BCFF800FF82B4 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD41A1BCFF800FF82B4 /* Dimension.swift */; };
-		F46C7AE31A1BCFF800FF82B4 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD51A1BCFF800FF82B4 /* Edge.swift */; };
-		F46C7AE41A1BCFF800FF82B4 /* Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD61A1BCFF800FF82B4 /* Edges.swift */; };
-		F46C7AE51A1BCFF800FF82B4 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD71A1BCFF800FF82B4 /* Expression.swift */; };
-		F46C7AE71A1BCFF800FF82B4 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7AD91A1BCFF800FF82B4 /* Layout.swift */; };
-		F46C7AE81A1BCFF800FF82B4 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ADA1A1BCFF800FF82B4 /* LayoutProxy.swift */; };
-		F46C7AE91A1BCFF800FF82B4 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ADB1A1BCFF800FF82B4 /* Point.swift */; };
-		F46C7AEA1A1BCFF800FF82B4 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ADC1A1BCFF800FF82B4 /* Priority.swift */; };
-		F46C7AEB1A1BCFF800FF82B4 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ADD1A1BCFF800FF82B4 /* Property.swift */; };
-		F46C7AEC1A1BCFF800FF82B4 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ADE1A1BCFF800FF82B4 /* Size.swift */; };
-		F46C7AED1A1BCFF800FF82B4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C7ADF1A1BCFF800FF82B4 /* View.swift */; };
 		F4D757FB1A45F82E000DE21E /* GalleryViewControllerTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D757FA1A45F82E000DE21E /* GalleryViewControllerTransitioning.swift */; };
 		F4EA7A0A1A1DB1CB00526783 /* GalleryExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA7A091A1DB1CB00526783 /* GalleryExampleViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D8EC16F4F9B24071572469E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4992326DAFC2C74F9CA0E6BB /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83C7404937D9A9ACDD04DAE2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F41FAA501A49C52000AF7366 /* MathAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MathAdditions.swift; path = Classes/MathAdditions.swift; sourceTree = "<group>"; };
 		F423759D1A1BCD8D003BECDF /* FNAsyncGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FNAsyncGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42375A11A1BCD8D003BECDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,41 +49,12 @@
 		F42375B21A1BCD8D003BECDF /* FNAsyncGalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FNAsyncGalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42375B71A1BCD8D003BECDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F42375B81A1BCD8D003BECDF /* FNAsyncGalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNAsyncGalleryTests.swift; sourceTree = "<group>"; };
-		F43625F11A2AF7FD00DECBD9 /* FICEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICEntity.h; sourceTree = "<group>"; };
-		F43625F21A2AF7FD00DECBD9 /* FICImageCache+FICErrorLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FICImageCache+FICErrorLogging.h"; sourceTree = "<group>"; };
-		F43625F31A2AF7FD00DECBD9 /* FICImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICImageCache.h; sourceTree = "<group>"; };
-		F43625F41A2AF7FD00DECBD9 /* FICImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICImageCache.m; sourceTree = "<group>"; };
-		F43625F51A2AF7FD00DECBD9 /* FICImageFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICImageFormat.h; sourceTree = "<group>"; };
-		F43625F61A2AF7FD00DECBD9 /* FICImageFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICImageFormat.m; sourceTree = "<group>"; };
-		F43625F71A2AF7FD00DECBD9 /* FICImageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICImageTable.h; sourceTree = "<group>"; };
-		F43625F81A2AF7FD00DECBD9 /* FICImageTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICImageTable.m; sourceTree = "<group>"; };
-		F43625F91A2AF7FD00DECBD9 /* FICImageTableChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICImageTableChunk.h; sourceTree = "<group>"; };
-		F43625FA1A2AF7FD00DECBD9 /* FICImageTableChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICImageTableChunk.m; sourceTree = "<group>"; };
-		F43625FB1A2AF7FD00DECBD9 /* FICImageTableEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICImageTableEntry.h; sourceTree = "<group>"; };
-		F43625FC1A2AF7FD00DECBD9 /* FICImageTableEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICImageTableEntry.m; sourceTree = "<group>"; };
-		F43625FD1A2AF7FD00DECBD9 /* FICImports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICImports.h; sourceTree = "<group>"; };
-		F43625FE1A2AF7FD00DECBD9 /* FICUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICUtilities.h; sourceTree = "<group>"; };
-		F43625FF1A2AF7FD00DECBD9 /* FICUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICUtilities.m; sourceTree = "<group>"; };
 		F436260A1A2B04FA00DECBD9 /* FNAsyncGallery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FNAsyncGallery-Bridging-Header.h"; path = "FNAsyncGallery/FNAsyncGallery-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		F436260C1A2BD75900DECBD9 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCacheManager.swift; path = Classes/ImageCacheManager.swift; sourceTree = "<group>"; };
 		F436260E1A2BD99E00DECBD9 /* FNImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FNImage.swift; path = Classes/FNImage.swift; sourceTree = "<group>"; };
 		F43626101A2C0E9E00DECBD9 /* GalleryImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryImageCell.swift; path = Classes/GalleryImageCell.swift; sourceTree = "<group>"; };
 		F43C6AD11A4AF69700B8C74F /* GalleryBrowserPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryBrowserPageView.swift; path = Classes/GalleryBrowserPageView.swift; sourceTree = "<group>"; };
 		F4634AC41A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryBrowsePhotoViewController.swift; path = Classes/GalleryBrowsePhotoViewController.swift; sourceTree = "<group>"; };
-		F46C7ACE1A1BCEE000FF82B4 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Alamofire/Source/Alamofire.swift; sourceTree = SOURCE_ROOT; };
-		F46C7AD21A1BCFF800FF82B4 /* Coefficients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coefficients.swift; sourceTree = "<group>"; };
-		F46C7AD31A1BCFF800FF82B4 /* Compound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compound.swift; sourceTree = "<group>"; };
-		F46C7AD41A1BCFF800FF82B4 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
-		F46C7AD51A1BCFF800FF82B4 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
-		F46C7AD61A1BCFF800FF82B4 /* Edges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edges.swift; sourceTree = "<group>"; };
-		F46C7AD71A1BCFF800FF82B4 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
-		F46C7AD91A1BCFF800FF82B4 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		F46C7ADA1A1BCFF800FF82B4 /* LayoutProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutProxy.swift; sourceTree = "<group>"; };
-		F46C7ADB1A1BCFF800FF82B4 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
-		F46C7ADC1A1BCFF800FF82B4 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
-		F46C7ADD1A1BCFF800FF82B4 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		F46C7ADE1A1BCFF800FF82B4 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
-		F46C7ADF1A1BCFF800FF82B4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F4D757FA1A45F82E000DE21E /* GalleryViewControllerTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryViewControllerTransitioning.swift; path = Classes/GalleryViewControllerTransitioning.swift; sourceTree = "<group>"; };
 		F4EA7A091A1DB1CB00526783 /* GalleryExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryExampleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75B70B3E18A82D3B6A4B034 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,12 +78,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CBA984AA21E5C76FCD60CD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4992326DAFC2C74F9CA0E6BB /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7A33BB3ED18193429C019C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D8EC16F4F9B24071572469E /* Pods.debug.xcconfig */,
+				83C7404937D9A9ACDD04DAE2 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F42375941A1BCD8D003BECDF = {
 			isa = PBXGroup;
 			children = (
 				F423759F1A1BCD8D003BECDF /* FNAsyncGallery */,
 				F42375B51A1BCD8D003BECDF /* FNAsyncGalleryTests */,
 				F423759E1A1BCD8D003BECDF /* Products */,
+				B7A33BB3ED18193429C019C6 /* Pods */,
+				6CBA984AA21E5C76FCD60CD4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,9 +132,6 @@
 		F42375A01A1BCD8D003BECDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F46C7ACE1A1BCEE000FF82B4 /* Alamofire.swift */,
-				F46C7AD01A1BCFF800FF82B4 /* Cartography */,
-				F43625F01A2AF7FD00DECBD9 /* FastImageCache */,
 				F42375A11A1BCD8D003BECDF /* Info.plist */,
 				F436260A1A2B04FA00DECBD9 /* FNAsyncGallery-Bridging-Header.h */,
 			);
@@ -183,29 +155,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F43625F01A2AF7FD00DECBD9 /* FastImageCache */ = {
-			isa = PBXGroup;
-			children = (
-				F43625F11A2AF7FD00DECBD9 /* FICEntity.h */,
-				F43625F21A2AF7FD00DECBD9 /* FICImageCache+FICErrorLogging.h */,
-				F43625F31A2AF7FD00DECBD9 /* FICImageCache.h */,
-				F43625F41A2AF7FD00DECBD9 /* FICImageCache.m */,
-				F43625F51A2AF7FD00DECBD9 /* FICImageFormat.h */,
-				F43625F61A2AF7FD00DECBD9 /* FICImageFormat.m */,
-				F43625F71A2AF7FD00DECBD9 /* FICImageTable.h */,
-				F43625F81A2AF7FD00DECBD9 /* FICImageTable.m */,
-				F43625F91A2AF7FD00DECBD9 /* FICImageTableChunk.h */,
-				F43625FA1A2AF7FD00DECBD9 /* FICImageTableChunk.m */,
-				F43625FB1A2AF7FD00DECBD9 /* FICImageTableEntry.h */,
-				F43625FC1A2AF7FD00DECBD9 /* FICImageTableEntry.m */,
-				F43625FD1A2AF7FD00DECBD9 /* FICImports.h */,
-				F43625FE1A2AF7FD00DECBD9 /* FICUtilities.h */,
-				F43625FF1A2AF7FD00DECBD9 /* FICUtilities.m */,
-			);
-			name = FastImageCache;
-			path = FastImageCache/FastImageCache;
-			sourceTree = SOURCE_ROOT;
-		};
 		F436260B1A2BD6D000DECBD9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,27 +170,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		F46C7AD01A1BCFF800FF82B4 /* Cartography */ = {
-			isa = PBXGroup;
-			children = (
-				F46C7AD21A1BCFF800FF82B4 /* Coefficients.swift */,
-				F46C7AD31A1BCFF800FF82B4 /* Compound.swift */,
-				F46C7AD41A1BCFF800FF82B4 /* Dimension.swift */,
-				F46C7AD51A1BCFF800FF82B4 /* Edge.swift */,
-				F46C7AD61A1BCFF800FF82B4 /* Edges.swift */,
-				F46C7AD71A1BCFF800FF82B4 /* Expression.swift */,
-				F46C7AD91A1BCFF800FF82B4 /* Layout.swift */,
-				F46C7ADA1A1BCFF800FF82B4 /* LayoutProxy.swift */,
-				F46C7ADB1A1BCFF800FF82B4 /* Point.swift */,
-				F46C7ADC1A1BCFF800FF82B4 /* Priority.swift */,
-				F46C7ADD1A1BCFF800FF82B4 /* Property.swift */,
-				F46C7ADE1A1BCFF800FF82B4 /* Size.swift */,
-				F46C7ADF1A1BCFF800FF82B4 /* View.swift */,
-			);
-			name = Cartography;
-			path = Cartography/Cartography;
-			sourceTree = SOURCE_ROOT;
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,9 +177,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F42375BC1A1BCD8D003BECDF /* Build configuration list for PBXNativeTarget "FNAsyncGallery" */;
 			buildPhases = (
+				ACF51C593AD4F1B6D078EDD6 /* Check Pods Manifest.lock */,
 				F42375991A1BCD8D003BECDF /* Sources */,
 				F423759A1A1BCD8D003BECDF /* Frameworks */,
 				F423759B1A1BCD8D003BECDF /* Resources */,
+				CD91054F71BCF90118DADD08 /* Embed Pods Frameworks */,
+				51AA0D7974D1C9193BA3BC1B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -337,41 +268,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		51AA0D7974D1C9193BA3BC1B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACF51C593AD4F1B6D078EDD6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD91054F71BCF90118DADD08 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F42375991A1BCD8D003BECDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46C7AED1A1BCFF800FF82B4 /* View.swift in Sources */,
-				F46C7AEB1A1BCFF800FF82B4 /* Property.swift in Sources */,
-				F46C7AEC1A1BCFF800FF82B4 /* Size.swift in Sources */,
 				F43C6AD21A4AF69700B8C74F /* GalleryBrowserPageView.swift in Sources */,
-				F43626001A2AF7FD00DECBD9 /* FICImageCache.m in Sources */,
-				F43626011A2AF7FD00DECBD9 /* FICImageFormat.m in Sources */,
-				F46C7ACF1A1BCEE000FF82B4 /* Alamofire.swift in Sources */,
 				F43626111A2C0E9E00DECBD9 /* GalleryImageCell.swift in Sources */,
 				F4D757FB1A45F82E000DE21E /* GalleryViewControllerTransitioning.swift in Sources */,
 				F436260F1A2BD99E00DECBD9 /* FNImage.swift in Sources */,
 				F41FAA511A49C52000AF7366 /* MathAdditions.swift in Sources */,
 				F42375A51A1BCD8D003BECDF /* GalleryViewController.swift in Sources */,
-				F43626031A2AF7FD00DECBD9 /* FICImageTableChunk.m in Sources */,
 				F4634AC51A323A3B00A63B7F /* GalleryBrowsePhotoViewController.swift in Sources */,
-				F46C7AE51A1BCFF800FF82B4 /* Expression.swift in Sources */,
-				F46C7AE31A1BCFF800FF82B4 /* Edge.swift in Sources */,
-				F46C7AE21A1BCFF800FF82B4 /* Dimension.swift in Sources */,
 				F42375A31A1BCD8D003BECDF /* AppDelegate.swift in Sources */,
-				F43626021A2AF7FD00DECBD9 /* FICImageTable.m in Sources */,
-				F46C7AE11A1BCFF800FF82B4 /* Compound.swift in Sources */,
-				F43626041A2AF7FD00DECBD9 /* FICImageTableEntry.m in Sources */,
-				F46C7AE71A1BCFF800FF82B4 /* Layout.swift in Sources */,
-				F46C7AE91A1BCFF800FF82B4 /* Point.swift in Sources */,
-				F46C7AE81A1BCFF800FF82B4 /* LayoutProxy.swift in Sources */,
 				F4EA7A0A1A1DB1CB00526783 /* GalleryExampleViewController.swift in Sources */,
-				F43626051A2AF7FD00DECBD9 /* FICUtilities.m in Sources */,
 				F436260D1A2BD75900DECBD9 /* ImageCacheManager.swift in Sources */,
-				F46C7AEA1A1BCFF800FF82B4 /* Priority.swift in Sources */,
-				F46C7AE41A1BCFF800FF82B4 /* Edges.swift in Sources */,
-				F46C7AE01A1BCFF800FF82B4 /* Coefficients.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +451,7 @@
 		};
 		F42375BD1A1BCD8D003BECDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D8EC16F4F9B24071572469E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FNAsyncGallery/Info.plist;
@@ -503,6 +463,7 @@
 		};
 		F42375BE1A1BCD8D003BECDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83C7404937D9A9ACDD04DAE2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FNAsyncGallery/Info.plist;

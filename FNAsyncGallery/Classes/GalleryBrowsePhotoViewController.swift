@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 
 @objc protocol GalleryBrowserDataSource {
     func imageEntityForPage(page: Int, inGalleyBrowser galleryBrowser: GalleryBrowsePhotoViewController) -> FNImage?
@@ -47,8 +48,8 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
     private var pageViews = [GalleryBrowserPageView?]()
     
     init(startPage: Int) {
-        super.init()
         self.startPage = startPage
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init(coder aDecoder: NSCoder) {

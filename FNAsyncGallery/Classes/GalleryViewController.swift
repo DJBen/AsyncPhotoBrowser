@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Cartography
+import FastImageCache
 
 /// The gallery data source protocol. Implement this protocol to supply custom data to the gallery.
 @objc protocol GalleryDataSource {
@@ -152,7 +154,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewCellIdentifier, forIndexPath: indexPath) as GalleryImageCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewCellIdentifier, forIndexPath: indexPath) as! GalleryImageCell
         
         // If the cache is properly set up, try to retrieve the image from internet
         if FICImageCache.sharedImageCache().formatWithName(FNImageSquareImage32BitBGRAFormatName) != nil {
@@ -166,7 +168,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
                 }
                 let imageExists = FICImageCache.sharedImageCache().imageExistsForEntity(imageEntity, withFormatName: FNImageSquareImage32BitBGRAFormatName)
                 FICImageCache.sharedImageCache().retrieveImageForEntity(imageEntity, withFormatName: FNImageSquareImage32BitBGRAFormatName) { (entity, formatName, image) -> Void in
-                    let theImageEntity = entity as FNImage
+                    let theImageEntity = entity as! FNImage
                     theImageEntity.thumbnail = image
                     
                     // Trigger partial update only if new image comes in

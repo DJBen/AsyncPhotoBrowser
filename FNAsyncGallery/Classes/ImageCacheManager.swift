@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import FastImageCache
 
 /// A manager to manage the FastImageCache used on Gallery View Controller.
 /// You may create a subclass of it to use support other images you wish to cache using FastImageCache.

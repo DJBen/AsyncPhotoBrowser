@@ -6,5 +6,5 @@
 //  Copyright (c) 2014 DJ.Ben. All rights reserved.
 //
 
-#import "FICImageCache.h"
-#import "FICUtilities.h"
+#import <FastImageCache/FICImageCache.h>
+#import <FastImageCache/FICUtilities.h>
