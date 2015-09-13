@@ -21,7 +21,7 @@ protocol FNImageDelegate {
     func sourceImageStateChangedForImageEntity(imageEntity: FNImage, oldState: FNImage.FNImageSourceImageState, newState: FNImage.FNImageSourceImageState)
 }
 
-class FNImage: NSObject, FICEntity, Hashable {
+class FNImage: NSObject, FICEntity {
     
     enum FNImageSourceImageState {
         case NotLoaded
@@ -108,11 +108,11 @@ class FNImage: NSObject, FICEntity, Hashable {
         reloadRequest = request(.GET, self.URLString).response { (_, _, data, error) in
             self.reloadRequest = nil
             if error != nil {
-                completion?(error: error)
+                completion?(error: error as? NSError)
                 self.sourceImageState = .Failed
                 return
             }
-            if let imageData = data as? NSData {
+            if let imageData = data {
                 if let image = UIImage(data: imageData) {
                     self.sourceImage = image
                     self.sourceImageState = .Ready
@@ -127,7 +127,7 @@ class FNImage: NSObject, FICEntity, Hashable {
     
     func pauseLoadingSource() {
         if reloadRequest != nil {
-            println("pause loading \(page)")
+            print("pause loading \(page)")
             reloadRequest!.suspend()
             sourceImageState = .Paused
         }
@@ -135,7 +135,7 @@ class FNImage: NSObject, FICEntity, Hashable {
     
     func resumeLoadingSource() {
         if reloadRequest != nil {
-            println("resume loading \(page)")
+            print("resume loading \(page)")
             reloadRequest!.resume()
             sourceImageState = .Loading
         }
@@ -149,7 +149,7 @@ extension UIImage {
     
         See https://github.com/path/FastImageCache/blob/master/FastImageCacheDemo/Classes/FICDPhoto.m for the original version.
     
-        :returns: a square version of the current image.
+        - returns: a square version of the current image.
     */
     func squareImage() -> UIImage {
         var squareImage: UIImage!
@@ -168,7 +168,7 @@ extension UIImage {
             } else {
                 cropRect.origin = CGPoint(x: rint((imageSize.width - smallerDimension) / 2.0), y: 0)
             }
-            let croppedImageRef: CGImageRef = CGImageCreateWithImageInRect(self.CGImage, cropRect)
+            let croppedImageRef: CGImageRef = CGImageCreateWithImageInRect(self.CGImage, cropRect)!
             squareImage = UIImage(CGImage:croppedImageRef)
         }
         return squareImage;

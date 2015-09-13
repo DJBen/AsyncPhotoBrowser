@@ -23,7 +23,7 @@ class GalleryImageCell: UICollectionViewCell {
     
 //    var imageEntity: FICEntity? 
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -40,7 +40,7 @@ class GalleryImageCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layout(imageView) { v in
+        constrain(imageView) { v in
             v.left == v.superview!.left
             v.right == v.superview!.right
             v.top == v.superview!.top

@@ -53,7 +53,7 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -103,7 +103,7 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         let attributeDict = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController!.navigationBar.titleTextAttributes = attributeDict
         view.addSubview(scrollView)
-        layout(scrollView) { v in
+        constrain(scrollView) { v in
             v.left == v.superview!.left
             v.right == v.superview!.right
             v.top == v.superview!.top
@@ -137,10 +137,10 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
                 imageEntity.loadSourceImageWithCompletion({ (error) -> Void in
                     if let pageView = self.pageViews[imageEntity.page!] {
                         if error == nil {
-                            println("complete loading \(page)")
+                            print("complete loading \(page)")
                             pageView.image = imageEntity.sourceImage
                         } else {
-                            println("failed loading \(page), error \(error)")
+                            print("failed loading \(page), error \(error)")
                         }
                     }
                 })

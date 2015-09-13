@@ -44,7 +44,7 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
         let view = UIView()
         view.backgroundColor = UIColor.whiteColor()
         scrollView.addSubview(view)
-        layout(view) { v in
+        constrain(view) { v in
             v.edges == inset(v.superview!.edges, 0)
             return
         }
@@ -78,7 +78,7 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
         commonSetup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonSetup()
     }
@@ -91,13 +91,13 @@ class GalleryBrowserPageView: UIView, FNImageDelegate, UIScrollViewDelegate {
     private func commonSetup() {
         addSubview(scrollView)
         addSubview(activityIndicator)
-        layout(scrollView) { v in
+        constrain(scrollView) { v in
             v.left == v.superview!.left
             v.right == v.superview!.right
             v.top == v.superview!.top
             v.bottom == v.superview!.bottom
         }
-        layout(activityIndicator) { v in
+        constrain(activityIndicator) { v in
             v.centerX == v.superview!.centerX
             v.centerY == v.superview!.centerY
         }

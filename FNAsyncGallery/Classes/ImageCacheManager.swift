@@ -16,7 +16,7 @@ import FastImageCache
 class ImageCacheManager: NSObject, FICImageCacheDelegate {
     
     /// Get the shared image cache manager object
-    /// :returns: A singleton object for the shared image cache manager
+    /// - returns: A singleton object for the shared image cache manager
     class var sharedManager : ImageCacheManager {
         struct Static {
             static let instance : ImageCacheManager = ImageCacheManager()
@@ -29,7 +29,7 @@ class ImageCacheManager: NSObject, FICImageCacheDelegate {
             return
         }
         FICImageCache.sharedImageCache().delegate = self
-        let squareImageFormatDevices: FICImageFormatDevices = .Phone | .Pad;
+        let squareImageFormatDevices: FICImageFormatDevices = [.Phone, .Pad]
         let imageFormat = FICImageFormat(name: FNImageSquareImage32BitBGRAFormatName, family: FNImageImageFormatFamily, imageSize: size, style: FICImageFormatStyle.Style32BitBGRA, maximumCount: 1000, devices: squareImageFormatDevices, protectionMode: .None)
         FICImageCache.sharedImageCache().setFormats([imageFormat])
     }
@@ -40,12 +40,12 @@ class ImageCacheManager: NSObject, FICImageCacheDelegate {
             imageEntity.sourceImageState = .Loading
             request(.GET, imageEntity.URLString).response { (_, response, data, error) in
                 if error != nil {
-                    println(error)
+                    print(error)
                     imageEntity.sourceImageState = .Failed
                     completionBlock(nil)
                     return
                 }
-                if let imageData = data as? NSData {
+                if let imageData = data {
                     if let sourceImage = UIImage(data: imageData) {
                         imageEntity.sourceImage = sourceImage
                         imageEntity.sourceImageState = .Ready
@@ -67,7 +67,7 @@ class ImageCacheManager: NSObject, FICImageCacheDelegate {
     }
     
     func imageCache(imageCache: FICImageCache!, errorDidOccurWithMessage errorMessage: String!) {
-        println("\(errorMessage)")
+        print("\(errorMessage)")
     }
     
 }

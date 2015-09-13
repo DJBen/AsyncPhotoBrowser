@@ -16,29 +16,29 @@ import FastImageCache
         The number of sections in the gallery.
         Currently has no effect.
         
-        :param: gallery The gallery being displayed.
+        - parameter gallery: The gallery being displayed.
     
-        :returns: The number of sections in the gallery.
+        - returns: The number of sections in the gallery.
     */
     optional func numberOfSectionsInGallery(gallery: GalleryViewController) -> Int
     
     /**
         The number of images in current section.
     
-        :param: gallery The gallery being displayed.
-        :param: section The section of the images being displayed.
+        - parameter gallery: The gallery being displayed.
+        - parameter section: The section of the images being displayed.
     
-        :returns: The number of images in current section.
+        - returns: The number of images in current section.
     */
     func gallery(gallery: GalleryViewController, numberOfImagesInSection section: Int) -> Int
     
     /**
         The number of images in current section.
     
-        :param: gallery The gallery being displayed.
-        :param: indexPath The indexPath of the image being displayed.
+        - parameter gallery: The gallery being displayed.
+        - parameter indexPath: The indexPath of the image being displayed.
     
-        :returns: The image URL of the current image.
+        - returns: The image URL of the current image.
     */
     optional func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> String
 }
@@ -99,7 +99,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         
         view.addSubview(collectionView)
         
-        layout(collectionView) { c in
+        constrain(collectionView) { c in
             c.left == c.superview!.left
             c.right == c.superview!.right
             c.top == c.superview!.top
@@ -154,7 +154,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewCellIdentifier, forIndexPath: indexPath) as! GalleryImageCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewCellIdentifier, forIndexPath: indexPath) as! GalleryImageCell
         
         // If the cache is properly set up, try to retrieve the image from internet
         if FICImageCache.sharedImageCache().formatWithName(FNImageSquareImage32BitBGRAFormatName) != nil {
@@ -176,7 +176,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
                         if image != nil {
                             self.collectionView.reloadItemsAtIndexPaths([theImageEntity.indexPath!])
                         } else {
-                            println("Failed to retrieve image at (\(indexPath.section), \(indexPath.row))")
+                            print("Failed to retrieve image at (\(indexPath.section), \(indexPath.row))")
                         }
                     }
                 }
