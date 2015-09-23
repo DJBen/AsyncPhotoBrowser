@@ -123,7 +123,7 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        if let pageView = pageViews[page] {
+        if pageViews[page] != nil {
             // Do nothing. The view is already loaded.
         } else {
             var frame = scrollView.bounds

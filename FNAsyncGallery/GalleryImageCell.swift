@@ -20,9 +20,7 @@ class GalleryImageCell: UICollectionViewCell {
             imageView.image = newValue
         }
     }
-    
-//    var imageEntity: FICEntity? 
-    
+        
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()

@@ -14,7 +14,7 @@ let FNImageImageFormatFamily = "FICDPhotoImageFormatFamily"
 let FNImageSquareImage32BitBGRAFormatName = "edu.jhu.djben.FNAsyncGallery.FICDPhotoSquareImage32BitBGRAFormatName"
 
 func ==(left: FNImage, right: FNImage) -> Bool {
-    return left.URLString == right.URLString
+    return left.URL == right.URL
 }
 
 protocol FNImageDelegate {
@@ -32,7 +32,7 @@ class FNImage: NSObject, FICEntity {
     }
     
     private var _UUID: String!
-    var URLString: String
+    var URL: NSURL
     var indexPath: NSIndexPath?
     var page: Int?
     var sourceImage: UIImage?
@@ -42,13 +42,13 @@ class FNImage: NSObject, FICEntity {
     private var reloadRequest: Request?
     
     override var hashValue: Int {
-        return self.URLString.hashValue
+        return self.URL.hashValue
     }
     
     var UUID: String {
         get {
             if _UUID == nil {
-                let UUIDBytes = FICUUIDBytesFromMD5HashOfString(self.URLString)
+                let UUIDBytes = FICUUIDBytesFromMD5HashOfString(self.URL.absoluteString)
                 _UUID = FICStringWithUUIDBytes(UUIDBytes)
             }
             return _UUID
@@ -71,14 +71,14 @@ class FNImage: NSObject, FICEntity {
         }
     }
     
-    init(URLString: String, indexPath: NSIndexPath? = nil) {
-        self.URLString = URLString
+    init(URL: NSURL, indexPath: NSIndexPath? = nil) {
+        self.URL = URL
         self.indexPath = indexPath
         super.init()
     }
     
     func sourceImageURLWithFormatName(formatName: String!) -> NSURL! {
-        return NSURL(string: URLString)
+        return URL
     }
     
     func drawingBlockForImage(image: UIImage!, withFormatName formatName: String!) -> FICEntityImageDrawingBlock! {
@@ -105,7 +105,15 @@ class FNImage: NSObject, FICEntity {
             return
         }
         sourceImageState = .Loading
-        reloadRequest = request(.GET, self.URLString).response { (_, _, data, error) in
+        
+        guard self.URL.scheme != "file" else {
+            self.sourceImage = UIImage(contentsOfFile: URL.path!)
+            self.sourceImageState = .Ready
+            completion?(error: nil)
+            return
+        }
+        
+        reloadRequest = request(.GET, self.URL).response { (_, _, data, error) in
             self.reloadRequest = nil
             if error != nil {
                 completion?(error: error as? NSError)

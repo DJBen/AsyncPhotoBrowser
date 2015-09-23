@@ -48,8 +48,6 @@ class GalleryViewControllerTransitioning: NSObject, UIViewControllerAnimatedTran
     var zoomToCellFrameUponDismissal = true
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         

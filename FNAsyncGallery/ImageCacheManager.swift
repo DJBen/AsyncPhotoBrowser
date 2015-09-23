@@ -38,7 +38,15 @@ class ImageCacheManager: NSObject, FICImageCacheDelegate {
     func imageCache(imageCache: FICImageCache!, wantsSourceImageForEntity entity: FICEntity!, withFormatName formatName: String!, completionBlock: FICImageRequestCompletionBlock!) {
         if let imageEntity = entity as? FNImage {
             imageEntity.sourceImageState = .Loading
-            request(.GET, imageEntity.URLString).response { (_, response, data, error) in
+            
+            guard imageEntity.URL.scheme != "file" else {
+                imageEntity.sourceImage = UIImage(contentsOfFile: imageEntity.URL.path!)
+                imageEntity.sourceImageState = .Ready
+                completionBlock(UIImage(contentsOfFile: imageEntity.URL.path!)!)
+                return
+            }
+            
+            request(.GET, imageEntity.URL).response { (_, response, data, error) in
                 if error != nil {
                     print(error)
                     imageEntity.sourceImageState = .Failed

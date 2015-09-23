@@ -40,7 +40,7 @@ import FastImageCache
     
         - returns: The image URL of the current image.
     */
-    optional func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> String
+    func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> NSURL
 }
 
 @objc protocol GalleryDelegate {
@@ -128,6 +128,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
     private func indexPathForPage(page: Int) -> NSIndexPath? {
         if page < 0 {
             return nil
@@ -158,12 +162,12 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         
         // If the cache is properly set up, try to retrieve the image from internet
         if FICImageCache.sharedImageCache().formatWithName(FNImageSquareImage32BitBGRAFormatName) != nil {
-            let imageURLString: String? = dataSource?.gallery?(self, imageURLAtIndexPath: indexPath)
-            if imageURLString != nil {
+            let imageURL: NSURL? = dataSource?.gallery(self, imageURLAtIndexPath: indexPath)
+            if imageURL != nil {
                 var imageEntity: FNImage!
                 imageEntity = images[indexPath]
                 if imageEntity == nil {
-                    imageEntity = FNImage(URLString: imageURLString!, indexPath: indexPath)
+                    imageEntity = FNImage(URL: imageURL!, indexPath: indexPath)
                     images[indexPath] = imageEntity
                 }
                 let imageExists = FICImageCache.sharedImageCache().imageExistsForEntity(imageEntity, withFormatName: FNImageSquareImage32BitBGRAFormatName)

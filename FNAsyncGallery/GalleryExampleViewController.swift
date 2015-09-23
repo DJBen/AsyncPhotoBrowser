@@ -24,7 +24,7 @@ class GalleryExampleViewController: GalleryViewController, GalleryDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "FNAsyncGallery"
+        navigationItem.title = "AsyncPhotoBrowser"
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,8 +36,8 @@ class GalleryExampleViewController: GalleryViewController, GalleryDataSource {
         return imageURLs.count
     }
     
-    func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> String {
-        return imageURLs[indexPath.row]
+    func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> NSURL {
+        return NSURL(string: imageURLs[indexPath.row])!
     }
     
     /*
