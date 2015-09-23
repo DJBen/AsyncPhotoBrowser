@@ -1,6 +1,6 @@
 //
 //  FNImage.swift
-//  FNAsyncGallery
+//  AsyncPhotoBrowser
 //
 //  Created by Sihao Lu on 11/30/14.
 //  Copyright (c) 2014 DJ.Ben. All rights reserved.
@@ -11,7 +11,7 @@ import FastImageCache
 import Alamofire
 
 let FNImageImageFormatFamily = "FICDPhotoImageFormatFamily"
-let FNImageSquareImage32BitBGRAFormatName = "edu.jhu.djben.FNAsyncGallery.FICDPhotoSquareImage32BitBGRAFormatName"
+let FNImageSquareImage32BitBGRAFormatName = "edu.jhu.djben.AsyncPhotoBrowser.FICDPhotoSquareImage32BitBGRAFormatName"
 
 func ==(left: FNImage, right: FNImage) -> Bool {
     return left.URL == right.URL

@@ -27,13 +27,13 @@
 		3D8EC16F4F9B24071572469E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4992326DAFC2C74F9CA0E6BB /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C7404937D9A9ACDD04DAE2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		F423759D1A1BCD8D003BECDF /* FNAsyncGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FNAsyncGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F423759D1A1BCD8D003BECDF /* AsyncPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42375A11A1BCD8D003BECDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F42375A21A1BCD8D003BECDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F42375A71A1BCD8D003BECDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F42375A91A1BCD8D003BECDF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F42375AC1A1BCD8D003BECDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F436260A1A2B04FA00DECBD9 /* FNAsyncGallery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FNAsyncGallery-Bridging-Header.h"; path = "FNAsyncGallery/FNAsyncGallery-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		F436260A1A2B04FA00DECBD9 /* AsyncPhotoBrowser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AsyncPhotoBrowser-Bridging-Header.h"; path = "AsyncPhotoBrowser/AsyncPhotoBrowser-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		F4378C9F1BB35B6B0079E194 /* FNImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FNImage.swift; sourceTree = "<group>"; };
 		F4378CA01BB35B6B0079E194 /* GalleryBrowsePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryBrowsePhotoViewController.swift; sourceTree = "<group>"; };
 		F4378CA11BB35B6B0079E194 /* GalleryBrowserPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryBrowserPageView.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		F42375941A1BCD8D003BECDF = {
 			isa = PBXGroup;
 			children = (
-				F423759F1A1BCD8D003BECDF /* FNAsyncGallery */,
+				F423759F1A1BCD8D003BECDF /* AsyncPhotoBrowser */,
 				F423759E1A1BCD8D003BECDF /* Products */,
 				B7A33BB3ED18193429C019C6 /* Pods */,
 				6CBA984AA21E5C76FCD60CD4 /* Frameworks */,
@@ -87,12 +87,12 @@
 		F423759E1A1BCD8D003BECDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F423759D1A1BCD8D003BECDF /* FNAsyncGallery.app */,
+				F423759D1A1BCD8D003BECDF /* AsyncPhotoBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F423759F1A1BCD8D003BECDF /* FNAsyncGallery */ = {
+		F423759F1A1BCD8D003BECDF /* AsyncPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
 				F42375A21A1BCD8D003BECDF /* AppDelegate.swift */,
@@ -103,14 +103,14 @@
 				F42375AB1A1BCD8D003BECDF /* LaunchScreen.xib */,
 				F42375A01A1BCD8D003BECDF /* Supporting Files */,
 			);
-			path = FNAsyncGallery;
+			path = AsyncPhotoBrowser;
 			sourceTree = "<group>";
 		};
 		F42375A01A1BCD8D003BECDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				F42375A11A1BCD8D003BECDF /* Info.plist */,
-				F436260A1A2B04FA00DECBD9 /* FNAsyncGallery-Bridging-Header.h */,
+				F436260A1A2B04FA00DECBD9 /* AsyncPhotoBrowser-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -127,15 +127,15 @@
 				F4378CA51BB35B6B0079E194 /* ImageCacheManager.swift */,
 				F4378CA61BB35B6B0079E194 /* MathAdditions.swift */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F423759C1A1BCD8D003BECDF /* FNAsyncGallery */ = {
+		F423759C1A1BCD8D003BECDF /* AsyncPhotoBrowser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F42375BC1A1BCD8D003BECDF /* Build configuration list for PBXNativeTarget "FNAsyncGallery" */;
+			buildConfigurationList = F42375BC1A1BCD8D003BECDF /* Build configuration list for PBXNativeTarget "AsyncPhotoBrowser" */;
 			buildPhases = (
 				ACF51C593AD4F1B6D078EDD6 /* Check Pods Manifest.lock */,
 				F42375991A1BCD8D003BECDF /* Sources */,
@@ -148,9 +148,9 @@
 			);
 			dependencies = (
 			);
-			name = FNAsyncGallery;
+			name = AsyncPhotoBrowser;
 			productName = FNAsyncGallery;
-			productReference = F423759D1A1BCD8D003BECDF /* FNAsyncGallery.app */;
+			productReference = F423759D1A1BCD8D003BECDF /* AsyncPhotoBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F42375981A1BCD8D003BECDF /* Build configuration list for PBXProject "FNAsyncGallery" */;
+			buildConfigurationList = F42375981A1BCD8D003BECDF /* Build configuration list for PBXProject "AsyncPhotoBrowser" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,7 +182,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F423759C1A1BCD8D003BECDF /* FNAsyncGallery */,
+				F423759C1A1BCD8D003BECDF /* AsyncPhotoBrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -323,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -359,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -371,11 +371,12 @@
 			baseConfigurationReference = 3D8EC16F4F9B24071572469E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FNAsyncGallery/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AsyncPhotoBrowser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.jhu.djben.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "FNAsyncGallery/FNAsyncGallery-Bridging-Header.h";
+				PRODUCT_NAME = AsyncPhotoBrowser;
+				SWIFT_OBJC_BRIDGING_HEADER = "AsyncPhotoBrowser/AsyncPhotoBrowser-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -384,18 +385,19 @@
 			baseConfigurationReference = 83C7404937D9A9ACDD04DAE2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FNAsyncGallery/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AsyncPhotoBrowser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.jhu.djben.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "FNAsyncGallery/FNAsyncGallery-Bridging-Header.h";
+				PRODUCT_NAME = AsyncPhotoBrowser;
+				SWIFT_OBJC_BRIDGING_HEADER = "AsyncPhotoBrowser/AsyncPhotoBrowser-Bridging-Header.h";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F42375981A1BCD8D003BECDF /* Build configuration list for PBXProject "FNAsyncGallery" */ = {
+		F42375981A1BCD8D003BECDF /* Build configuration list for PBXProject "AsyncPhotoBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F42375BA1A1BCD8D003BECDF /* Debug */,
@@ -404,7 +406,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F42375BC1A1BCD8D003BECDF /* Build configuration list for PBXNativeTarget "FNAsyncGallery" */ = {
+		F42375BC1A1BCD8D003BECDF /* Build configuration list for PBXNativeTarget "AsyncPhotoBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F42375BD1A1BCD8D003BECDF /* Debug */,

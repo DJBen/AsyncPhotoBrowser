@@ -1,26 +1,16 @@
 PODS:
-  - Alamofire (2.0.0)
-  - Cartography (0.5.0)
+  - Alamofire (2.0.2)
+  - Cartography (0.6.0)
   - FastImageCache (1.3)
 
 DEPENDENCIES:
   - Alamofire
-  - Cartography (from `git@github.com:robb/Cartography.git`, branch `0.6-development`)
+  - Cartography
   - FastImageCache (~> 1.3)
 
-EXTERNAL SOURCES:
-  Cartography:
-    :branch: 0.6-development
-    :git: git@github.com:robb/Cartography.git
-
-CHECKOUT OPTIONS:
-  Cartography:
-    :commit: bf14cf5ad7276a1659cfa2ddd1a7811b4431f535
-    :git: git@github.com:robb/Cartography.git
-
 SPEC CHECKSUMS:
-  Alamofire: 2f13548b29d25a58ecd91c9225fb51493e2b782b
-  Cartography: 314f5ed1495995760487161eeb7a8a0940d88ad3
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   FastImageCache: 25f214fd46405daca3d1995d783fb83b9036c62e
 
 COCOAPODS: 0.38.2
