@@ -1,9 +1,16 @@
-FNAsyncGallery
+AsyncPhotoBrowser
 ==============
 
 High performance gallery designed for web images built with FastImageCache. It consists of a grid view controller that contains all thumbnails of the images. You can tap on any of the photos to browse specific images in a browser view controller with zoom in / out and scrolling capabilities.
 
 ## Usage
+
+### Installation via Cocoapods
+This is the recommended approach.
+
+    pod 'AsyncPhotoBrowser', '~> 0.2.0'
+        
+### How to start
 1. Import all files in `/Classes`.
 2. Create a subclass of `GalleryViewController`.
 3. Implement `GalleryDataSource` protocol. As examples shown below
@@ -20,18 +27,18 @@ High performance gallery designed for web images built with FastImageCache. It c
             // return number of images
         }
         
-        func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> String {
-            // return the URL of image at index path
+        func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> NSURL {
+            // return the remote or local URL of the specific image
         }
         
 ## Demo
 ![FastImageCache Demo](https://raw.githubusercontent.com/DJBen/FNAsyncGallery/master/Screenshots/FNAsyncGallery_Demo.gif "FastImageCache")
 
-## TODO
+## Pending Improvements
 1. Gallery View Controller currently has only one section containing all images. Consider adding more sections.
 
-## Bug
-1. Scrolling gesture on the transparent part of images doesn't work.
+## Known Issues
+1. ~~Scrolling gesture on the transparent part of images doesn't work.~~
 2. Zooming sometimes makes image scrolling stuck. Zooming it again can solve this problem.
 
 ## Notes
