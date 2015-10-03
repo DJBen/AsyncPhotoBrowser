@@ -21,7 +21,7 @@ protocol FNImageDelegate {
     func sourceImageStateChangedForImageEntity(imageEntity: FNImage, oldState: FNImage.FNImageSourceImageState, newState: FNImage.FNImageSourceImageState)
 }
 
-class FNImage: NSObject, FICEntity {
+public class FNImage: NSObject, FICEntity {
     
     enum FNImageSourceImageState {
         case NotLoaded
@@ -41,11 +41,11 @@ class FNImage: NSObject, FICEntity {
     
     private var reloadRequest: Request?
     
-    override var hashValue: Int {
+    override public var hashValue: Int {
         return self.URL.hashValue
     }
     
-    var UUID: String {
+    public var UUID: String {
         get {
             if _UUID == nil {
                 let UUIDBytes = FICUUIDBytesFromMD5HashOfString(self.URL.absoluteString)
@@ -55,7 +55,7 @@ class FNImage: NSObject, FICEntity {
         }
     }
     
-    var sourceImageUUID: String {
+    public var sourceImageUUID: String {
         get {
             return self.UUID
         }
@@ -77,11 +77,11 @@ class FNImage: NSObject, FICEntity {
         super.init()
     }
     
-    func sourceImageURLWithFormatName(formatName: String!) -> NSURL! {
+    public func sourceImageURLWithFormatName(formatName: String!) -> NSURL! {
         return URL
     }
     
-    func drawingBlockForImage(image: UIImage!, withFormatName formatName: String!) -> FICEntityImageDrawingBlock! {
+    public func drawingBlockForImage(image: UIImage!, withFormatName formatName: String!) -> FICEntityImageDrawingBlock! {
         let drawingBlock: FICEntityImageDrawingBlock = { context, contextSize in
             let contextBounds = CGRect(origin: CGPointZero, size: contextSize)
             CGContextClearRect(context, contextBounds)

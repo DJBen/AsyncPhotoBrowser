@@ -11,7 +11,7 @@ import Cartography
 import FastImageCache
 
 /// The gallery data source protocol. Implement this protocol to supply custom data to the gallery.
-@objc protocol GalleryDataSource {
+@objc public protocol GalleryDataSource {
     /**
         The number of sections in the gallery.
         Currently has no effect.
@@ -43,27 +43,23 @@ import FastImageCache
     func gallery(gallery: GalleryViewController, imageURLAtIndexPath indexPath: NSIndexPath) -> NSURL
 }
 
-@objc protocol GalleryDelegate {
-
-}
-
-class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GalleryBrowserDataSource {
+public class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GalleryBrowserDataSource {
     
-    enum GalleryCellSizingMode {
+    public enum GalleryCellSizingMode {
         case FixedSize(CGSize)
         case FixedItemsPerRow(Int)
     }
     
     let collectionViewCellIdentifier = "imageCell"
     var collectionView: UICollectionView!
-    var dataSource: GalleryDataSource?
+    public var dataSource: GalleryDataSource?
     
     /** 
         The cell sizing mode: Fixed number of items per row or fixed size.
     
         :discussion: Set this before laying out the GalleryViewController. Any setter call after that does nothing, because the FastImageCache only initializes once.
     */
-    var cellSizingMode: GalleryCellSizingMode = .FixedItemsPerRow(3) {
+    public var cellSizingMode: GalleryCellSizingMode = .FixedItemsPerRow(3) {
         didSet {
             if cacheAlreadySetup {
                 self.cellSizingMode = oldValue
@@ -76,7 +72,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     /**
         The minimum spacing between items. Has effect when cellSizingMode is set to .FixedItemsPerRow.
     */
-    var itemSpacing: CGFloat = 4
+    public var itemSpacing: CGFloat = 4
     
     private var cacheAlreadySetup: Bool = false
     private var collectionViewLayout = UICollectionViewFlowLayout()
@@ -84,7 +80,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     private var selectedIndexPath: NSIndexPath?
     private var animator: UIViewControllerTransitioningDelegate!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
@@ -107,12 +103,12 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
 
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !cacheAlreadySetup {
             var itemSize: CGSize!
@@ -149,15 +145,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: Collection View Data Source
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return dataSource?.numberOfSectionsInGallery?(self) ?? 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource?.gallery(self, numberOfImagesInSection: section) ?? 0
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionViewCellIdentifier, forIndexPath: indexPath) as! GalleryImageCell
         
         // If the cache is properly set up, try to retrieve the image from internet
@@ -191,15 +187,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     // MARK: Collection View Delegate
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return itemSpacing
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return itemSpacing
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         switch cellSizingMode {
         case .FixedSize(let size):
             return size
@@ -210,7 +206,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let imageEntity = self.images[indexPath]!
         if imageEntity.isReady {
             var page: Int = 0

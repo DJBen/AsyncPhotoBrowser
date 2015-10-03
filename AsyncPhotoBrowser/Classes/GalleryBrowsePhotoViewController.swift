@@ -14,7 +14,7 @@ import Cartography
     func numberOfImagesForGalleryBrowser(browser: GalleryBrowsePhotoViewController) -> Int
 }
 
-class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
+public class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
     
     var dataSource: GalleryBrowserDataSource?
     
@@ -53,25 +53,25 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         commonSetup()
     }
 
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !layedOutScrollView {
             // Size scroll view contents
@@ -208,12 +208,12 @@ class GalleryBrowsePhotoViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: Scroll View Delegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
         loadVisiblePages()
         navigationItem.title = "\(currentPage + 1) / \(imageCount)"
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         resetPageZooming(currentPage - 1)
         resetPageZooming(currentPage + 1)
     }

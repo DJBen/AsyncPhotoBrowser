@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AsyncPhotoBrowser
 
 class GalleryExampleViewController: GalleryViewController, GalleryDataSource {
     
